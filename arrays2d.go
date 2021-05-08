@@ -70,17 +70,19 @@ func getHourGlassMaxSum (arr [][]int32) int32 {
     for i:=0; i<3; i++{
         sum += arr[0][i]
         sum += arr[2][i]
+        
     }
+    sum += arr[1][1]
 	maxSum := sum
+    sum = 0
 	for lastRow := 2; lastRow<=RowLen; lastRow++{
-		for lastCol :=3; lastCol<=ColumnLen; lastCol++{
+		for lastCol :=2; lastCol<=ColumnLen; lastCol++{
 
             for i:=0; i<3; i++{
                 sum += arr[lastRow-2][lastCol-i]
                 sum += arr[lastRow][lastCol-i]
             }
             sum += arr[lastRow-1][lastCol-1]
-            fmt.Println(sum)
             
 			if sum>maxSum{
 				maxSum=sum
